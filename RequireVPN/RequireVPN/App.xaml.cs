@@ -10,22 +10,27 @@ namespace RequireVPN
     /// </summary>
     public partial class App : System.Windows.Application
     {
-        public static NotifyIcon icon;
+        
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            App.icon = new NotifyIcon();
-            icon.Click += new EventHandler(icon_Click);
-            icon.Icon = new System.Drawing.Icon(RequireVPN.Properties.Resources.rvpnTray, new System.Drawing.Size(128,128));
-            icon.Visible = true;
-           
+            // Add tray icon
+            //App.icon = new NotifyIcon();
+            //icon.Click += new EventHandler(icon_Click);
+            //icon.Icon = new System.Drawing.Icon(RequireVPN.Properties.Resources.rvpnTray, new System.Drawing.Size(128,128));
+            //icon.Visible = true;
+
+            
+
+            //this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't thing there is an error.
+            //this.notifyIcon.BalloonTipText = "[Balloon Text when Minimized]";
+            //this.notifyIcon.BalloonTipTitle = "[Balloon Title when Minimized]";
+            //this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon"))); //The tray icon to use
+            //this.notifyIcon.Text = "[Message shown when hovering over tray icon]";
 
             base.OnStartup(e);
         }
 
-        private void icon_Click(Object sender, EventArgs e)
-        {
-            System.Windows.MessageBox.Show("Thanks for clicking me");
-        }
+
     }
 }
