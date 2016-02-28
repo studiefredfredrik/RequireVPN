@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RequireVPN"
         mc:Ignorable="d"
-        Title="Configuration" Height="401.226" Width="545.705" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Configuration" Height="401.226" Width="545.705" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Icon="rvpnTray.ico">
     <Grid Margin="0,0,2,8">
         <Button x:Name="btn_refreshProcesses" Content="Refresh list" HorizontalAlignment="Left" Margin="396,35,-217,0" VerticalAlignment="Top" Width="113" Height="20" Click="btn_refreshProcesses_Click"/>
         <Button x:Name="btn_bindProcesses" Content="Bind to process" HorizontalAlignment="Left" Margin="396,60,-217,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.807,3" Height="20" Click="btn_bindProcesses_Click"/>

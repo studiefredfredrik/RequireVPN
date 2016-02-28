@@ -33,6 +33,5 @@ namespace RequireVPN
                 return (object)binaryFormatter.Deserialize(stream);
             }
         }
-
     }
 }

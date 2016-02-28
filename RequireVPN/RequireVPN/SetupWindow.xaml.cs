@@ -15,6 +15,7 @@ namespace RequireVPN
 
         private void btn_refreshProcesses_Click(object sender, RoutedEventArgs e)
         {
+            lst_processes.Items.Clear();
             lst_processes.IsEnabled = true;
             btn_bindProcesses.IsEnabled = true;
             Process[] processes = Process.GetProcesses();
@@ -37,6 +38,7 @@ namespace RequireVPN
 
         private void btn_refreshAdapters_Click(object sender, RoutedEventArgs e)
         {
+            lst_adapters.Items.Clear();
             lst_adapters.IsEnabled = true;
             btn_bindAdapter.IsEnabled = true;
             NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();

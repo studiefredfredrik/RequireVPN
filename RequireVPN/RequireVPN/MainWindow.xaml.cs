@@ -20,13 +20,15 @@ namespace RequireVPN
             try
             {
                 ApplicationSettings settings = SettingsHandler.GetApplicationSetting();
-                AppTerminator.selectedProcess = Process.GetProcessesByName(settings.processName).First();
-                AdapterWatcher.adapter = NetworkInterface.GetAllNetworkInterfaces().First(s => s.Name == settings.adapterName);
+                if(Process.GetProcessesByName(settings.processName).Any())
+                    AppTerminator.selectedProcess = Process.GetProcessesByName(settings.processName).First();
+                if(NetworkInterface.GetAllNetworkInterfaces().Any(s => s.Name == settings.adapterName))
+                    AdapterWatcher.adapter = NetworkInterface.GetAllNetworkInterfaces().First(s => s.Name == settings.adapterName);
                 UpdateTextboxStatus();
             }
             catch(Exception)
             {
-
+                System.Windows.MessageBox.Show("failed");
             }
             Properties.Settings.Default.Save();
 
