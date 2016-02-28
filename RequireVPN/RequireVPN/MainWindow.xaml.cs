@@ -1,32 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RequireVPN
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public static NotifyIcon icon;
         private static bool baloonHasBeenShown = false;
+        private AppTerminator appTerminator = new AppTerminator();
 
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                ApplicationSettings settings = SettingsHandler.GetApplicationSetting();
+                AppTerminator.selectedProcess = Process.GetProcessesByName(settings.processName).First();
+                AdapterWatcher.adapter = NetworkInterface.GetAllNetworkInterfaces().First(s => s.Name == settings.adapterName);
+                UpdateTextboxStatus();
+            }
+            catch(Exception)
+            {
+
+            }
+            Properties.Settings.Default.Save();
+
             Loaded += MainWindow_Loaded;
         }
 
@@ -39,6 +42,8 @@ namespace RequireVPN
             icon.BalloonTipText = "rVPN is running in the background";
             icon.BalloonTipTitle = "rVPN";
             icon.Text = "rVPN";
+            txt_adapter.IsReadOnly = true;
+            txt_process.IsReadOnly = true;
         }
 
         private void icon_Click(Object sender, EventArgs e)
@@ -47,7 +52,6 @@ namespace RequireVPN
             this.WindowState = WindowState.Normal;
             this.ShowInTaskbar = true;
             icon.Visible = false;
-            //System.Windows.MessageBox.Show("Thanks for clicking me");
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
@@ -57,10 +61,48 @@ namespace RequireVPN
                 icon.Visible = true;
                 if (!baloonHasBeenShown)
                 {
-                    icon.ShowBalloonTip(3000);
+                    icon.ShowBalloonTip(500);
                     baloonHasBeenShown = true;
                 }
                 this.ShowInTaskbar = false;
+            }
+        }
+
+        private void btn_configure_Click(object sender, RoutedEventArgs e)
+        {
+            SetupWindow setup = new SetupWindow();
+            setup.ShowDialog();
+            UpdateTextboxStatus();
+        }
+
+        private void btn_start_Click(object sender, RoutedEventArgs e)
+        {
+            AdapterWatcher.StartWatching(this);
+        }
+
+        private void UpdateTextboxStatus()
+        {
+            if (AppTerminator.selectedProcess != null)
+            {
+                txt_process.Text = AppTerminator.selectedProcess.ProcessName;
+                txt_process.Background = Brushes.Green;
+            }
+            else
+            {
+                txt_process.Text = "none";
+                txt_process.Background = Brushes.White;
+            }
+
+
+            if (AdapterWatcher.adapter != null)
+            {
+                txt_adapter.Text = AdapterWatcher.adapter.Name;
+                txt_adapter.Background = Brushes.Green;
+            }
+            else
+            {
+                txt_adapter.Text = "none";
+                txt_adapter.Background = Brushes.White;
             }
         }
     }

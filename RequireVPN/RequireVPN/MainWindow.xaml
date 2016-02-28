@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RequireVPN"
         mc:Ignorable="d"
-        Title="RequireVPN" Height="350" Width="525" StateChanged="Window_StateChanged">
-    <Grid>
-        
-        
-        
-        
-        
+        Title="RequireVPN" Height="350" Width="435.89" StateChanged="Window_StateChanged" ResizeMode="NoResize">
+    <Grid Margin="0,0,38,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbl_process" Content="Process:" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="26" Width="53"/>
+        <Label x:Name="lbl_adapter" Content="Network adapter:" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+        <TextBox x:Name="txt_process" HorizontalAlignment="Left" Height="23" Margin="163,61,0,0" TextWrapping="Wrap" Text="none" VerticalAlignment="Top" Width="215" />
+        <TextBox x:Name="txt_adapter" HorizontalAlignment="Left" Height="23" Margin="163,117,0,0" TextWrapping="Wrap" Text="none" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="lbl_header" Content="Current configuration:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="31" Width="178"/>
+        <Button x:Name="btn_configure" Content="Configure" HorizontalAlignment="Left" Margin="257,228,0,0" VerticalAlignment="Top" Width="121" Click="btn_configure_Click"/>
+        <Button x:Name="btn_start" Content="Start watcher" HorizontalAlignment="Left" Margin="257,265,0,0" VerticalAlignment="Top" Width="121" Click="btn_start_Click"/>
+        <Label x:Name="lbl_status" Content="Status:" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+        <TextBox x:Name="txt_status" HorizontalAlignment="Left" Height="23" Margin="163,167,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="215"/>
+
+
     </Grid>
 </Window>

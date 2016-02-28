@@ -12,3 +12,5 @@ C:\Users\Fredrik\Documents\GitHub\RequireVPN\RequireVPN\RequireVPN\obj\Debug\Req
 C:\Users\Fredrik\Documents\GitHub\RequireVPN\RequireVPN\RequireVPN\obj\Debug\RequireVPN.csproj.GenerateResource.Cache
 C:\Users\Fredrik\Documents\GitHub\RequireVPN\RequireVPN\RequireVPN\obj\Debug\RequireVPN.exe
 C:\Users\Fredrik\Documents\GitHub\RequireVPN\RequireVPN\RequireVPN\obj\Debug\RequireVPN.pdb
+C:\Users\Fredrik\Documents\GitHub\RequireVPN\RequireVPN\RequireVPN\obj\Debug\SetupWindow.g.cs
+C:\Users\Fredrik\Documents\GitHub\RequireVPN\RequireVPN\RequireVPN\obj\Debug\SetupWindow.baml
