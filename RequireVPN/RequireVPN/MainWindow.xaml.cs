@@ -28,7 +28,6 @@ namespace RequireVPN
             }
             catch(Exception)
             {
-                System.Windows.MessageBox.Show("failed");
             }
             Properties.Settings.Default.Save();
 
