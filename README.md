@@ -6,4 +6,4 @@ connection.
 RequireVPN is a program you can set to monitor a given network adapter (your VPN connection),
 and set it to kill a given process if the network adapter disconnects.
 
-![RequireVPN monitoring VPN connection and uTorrent]()
+![RequireVPN monitoring VPN connection and uTorrent](https://github.com/studiefredfredrik/RequireVPN/blob/master/screenshots/screenshot%201.JPG?raw=true)
